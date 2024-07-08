@@ -1,0 +1,66 @@
+﻿@model AplicacionTiendita.Models.T_Producto
+
+@{
+    ViewBag.Title = "Detalles del Producto";
+}
+
+<h2>Detalles del Producto</h2>
+
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <h4>Detalles del Producto</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.categoria.nomcat)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.categoria.nomcat)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.nompro)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.nompro)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.despro)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.despro)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.prepro)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.prepro)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.canpro)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.canpro)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.estpro)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.estpro)
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer text-right">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.codpro }, new { @class = "btn btn-warning" }) <i class="fas fa-edit"></i>
+        @Html.ActionLink("Volver a la Lista", "Index", null, new { @class = "btn btn-secondary ml-2" }) <i class="fas fa-arrow-left"></i>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+}

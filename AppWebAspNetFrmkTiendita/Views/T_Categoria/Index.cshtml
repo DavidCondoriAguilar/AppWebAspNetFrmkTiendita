@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AplicacionTiendita.Models.T_Categoria>
+
+@{
+    ViewBag.Title = "Categorías";
+}
+
+<h2 class="text-center text-primary mb-4">Categorías</h2>
+
+<p>
+    @Html.ActionLink("Crear Nueva Categoría", "Create", null, new { @class = "btn btn-primary mb-3" })
+</p>
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.First().codcat)</th>
+                <th>@Html.DisplayNameFor(model => model.First().nomcat)</th>
+                <th>@Html.DisplayNameFor(model => model.First().estcat)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.codcat)</td>
+                    <td>@Html.DisplayFor(modelItem => item.nomcat)</td>
+                    <td>@Html.DisplayFor(modelItem => item.estcat)</td>
+                    <td>
+                        @Html.ActionLink(" ", "Edit", new { id = item.codcat }, new { @class = "btn btn-warning btn-sm bi bi-pencil-square", @title = "Editar" })
+                        @Html.ActionLink(" ", "Details", new { id = item.codcat }, new { @class = "btn btn-info btn-sm bi bi-info-circle", @title = "Detalles" })
+                        @Html.ActionLink(" ", "Delete", new { id = item.codcat }, new { @class = "btn btn-danger btn-sm bi bi-trash", @title = "Eliminar" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+}

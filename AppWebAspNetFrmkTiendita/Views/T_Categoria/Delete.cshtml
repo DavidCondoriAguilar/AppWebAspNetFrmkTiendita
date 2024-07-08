@@ -1,0 +1,45 @@
+﻿@model AplicacionTiendita.Models.T_Categoria
+
+@{
+    ViewBag.Title = "Eliminar de la Categoría";
+}
+
+<h2>Delete</h2>
+
+<h3>Estas seguro eliminarlo bru?</h3>
+<div>
+    <h4>T_Categoria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nomcat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomcat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estcat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estcat)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> | <!-- Cambiado a btn-danger para el botón de eliminar -->
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" }) <!-- Botón para regresar a la lista -->
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Mantienes la referencia a Font Awesome -->
+}
