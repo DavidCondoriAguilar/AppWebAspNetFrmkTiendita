@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using AplicacionTiendita.Models;
 
 namespace AppWebAspNetFrmkTiendita.Controllers
@@ -15,10 +14,28 @@ namespace AppWebAspNetFrmkTiendita.Controllers
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: T_Producto
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int? page)
         {
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+
             var t_producto = db.t_producto.Include(t => t.categoria);
-            return View(t_producto.ToList());
+
+            // Aplicar búsqueda por nombre si existe
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                t_producto = t_producto.Where(p => p.nompro.Contains(searchString));
+            }
+
+            // Aplicar ordenamiento
+            t_producto = t_producto.OrderBy(p => p.nompro);
+
+            // Convertir a IPagedList
+            IPagedList<T_Producto> pagedProductos = t_producto.ToPagedList(pageNumber, pageSize);
+
+            ViewBag.CurrentFilter = searchString;
+
+            return View(pagedProductos);
         }
 
         // GET: T_Producto/Details/5
@@ -44,8 +61,6 @@ namespace AppWebAspNetFrmkTiendita.Controllers
         }
 
         // POST: T_Producto/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "codpro,nompro,despro,prepro,canpro,estpro,codcat")] T_Producto t_Producto)
@@ -78,8 +93,6 @@ namespace AppWebAspNetFrmkTiendita.Controllers
         }
 
         // POST: T_Producto/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "codpro,nompro,despro,prepro,canpro,estpro,codcat")] T_Producto t_Producto)

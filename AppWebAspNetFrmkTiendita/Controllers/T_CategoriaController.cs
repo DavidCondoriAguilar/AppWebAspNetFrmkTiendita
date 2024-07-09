@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AplicacionTiendita.Models;
+using PagedList;
 
 namespace AppWebAspNetFrmkTiendita.Controllers
 {
@@ -15,18 +16,31 @@ namespace AppWebAspNetFrmkTiendita.Controllers
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: T_Categoria
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, int? page)
         {
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+
             var categorias = from c in db.t_categoria
                              select c;
 
+            // Aplicar búsqueda por nombre si existe
             if (!String.IsNullOrEmpty(searchString))
             {
                 categorias = categorias.Where(c => c.nomcat.Contains(searchString));
             }
 
-            return View(categorias.ToList());
+            // Aplicar ordenamiento
+            categorias = categorias.OrderBy(c => c.nomcat);
+
+            // Convertir a IPagedList
+            IPagedList<T_Categoria> pagedCategorias = categorias.ToPagedList(pageNumber, pageSize);
+
+            ViewBag.CurrentFilter = searchString;
+
+            return View(pagedCategorias);
         }
+
 
 
         // GET: T_Categoria/Details/5

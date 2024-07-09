@@ -90,3 +90,7 @@ C:\Users\DAVIDWILD\Desktop\ISIL- V\NET\Evaluaciones\DavidCondoriAguilar04\AppWeb
 C:\Users\DAVIDWILD\Desktop\ISIL- V\NET\Evaluaciones\DavidCondoriAguilar04\AppWebAspNetFrmkTiendita\AppWebAspNetFrmkTiendita\obj\Debug\AppWebAspNetFrmkTiendita.pdb
 C:\Users\DAVIDWILD\Desktop\ISIL- V\NET\Evaluaciones\DavidCondoriAguilar04\AppWebAspNetFrmkTiendita\AppWebAspNetFrmkTiendita\obj\Debug\AppWebAspNetFrmkTiendita.Migrations.Inicial.resources
 C:\Users\DAVIDWILD\Desktop\ISIL- V\NET\Evaluaciones\DavidCondoriAguilar04\AppWebAspNetFrmkTiendita\AppWebAspNetFrmkTiendita\obj\Debug\AppWebAspNetFrmkTiendita.csproj.GenerateResource.cache
+C:\Users\DAVIDWILD\Desktop\ISIL- V\NET\Evaluaciones\DavidCondoriAguilar04\AppWebAspNetFrmkTiendita\AppWebAspNetFrmkTiendita\bin\PagedList.dll
+C:\Users\DAVIDWILD\Desktop\ISIL- V\NET\Evaluaciones\DavidCondoriAguilar04\AppWebAspNetFrmkTiendita\AppWebAspNetFrmkTiendita\bin\PagedList.Mvc.dll
+C:\Users\DAVIDWILD\Desktop\ISIL- V\NET\Evaluaciones\DavidCondoriAguilar04\AppWebAspNetFrmkTiendita\AppWebAspNetFrmkTiendita\bin\PagedList.xml
+C:\Users\DAVIDWILD\Desktop\ISIL- V\NET\Evaluaciones\DavidCondoriAguilar04\AppWebAspNetFrmkTiendita\AppWebAspNetFrmkTiendita\bin\PagedList.Mvc.xml
