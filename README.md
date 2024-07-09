@@ -105,3 +105,4 @@ Este documento ha proporcionado una visión general de las operaciones CRUD impl
 ![1](https://github.com/DavidCondoriAguilar/AppWebAspNetFrmkTiendita/assets/103283145/cd847c89-cf72-4381-9864-181d7ae3b4d4)
 ![5](https://github.com/DavidCondoriAguilar/AppWebAspNetFrmkTiendita/assets/103283145/c60c7190-797a-491a-ba87-697ed3f9ae14)
 ![4](https://github.com/DavidCondoriAguilar/AppWebAspNetFrmkTiendita/assets/103283145/92192f49-b1e4-4198-96c7-4f93839ca425)
+![x](https://github.com/DavidCondoriAguilar/AppWebAspNetFrmkTiendita/assets/103283145/e4eb711d-f1b1-4f93-9c78-130aca0b2a0b)
