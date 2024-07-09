@@ -5,9 +5,9 @@ Este documento detalla las operaciones CRUD (Create, Read, Update, Delete) imple
 Tecnologías Utilizadas
 Backend:
 
-C# (.NET Core)
-Entity Framework Core
-ASP.NET Core MVC
+C# (.NET Framework)
+Entity Framework
+ASP.NET  MVC
 Frontend:
 
 Razor Views (MVC Views)
