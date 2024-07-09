@@ -15,10 +15,19 @@ namespace AppWebAspNetFrmkTiendita.Controllers
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: T_Categoria
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.t_categoria.ToList());
+            var categorias = from c in db.t_categoria
+                             select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                categorias = categorias.Where(c => c.nomcat.Contains(searchString));
+            }
+
+            return View(categorias.ToList());
         }
+
 
         // GET: T_Categoria/Details/5
         public ActionResult Details(int? id)

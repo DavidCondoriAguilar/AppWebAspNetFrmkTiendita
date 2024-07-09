@@ -9,8 +9,14 @@
 <p>
     @Html.ActionLink("Crear Nueva Categoría", "Create", null, new { @class = "btn btn-primary mb-3" })
 </p>
+
+<!-- Formulario de Búsqueda -->
+<div class="form-group">
+    <input type="text" id="searchInput" class="form-control" placeholder="Buscar por nombre de categoría..." />
+</div>
+
 <div class="table-responsive">
-    <table class="table table-hover table-striped table-bordered">
+    <table class="table table-hover table-striped table-bordered" id="categoriaTable">
         <thead class="thead-dark">
             <tr>
                 <th>@Html.DisplayNameFor(model => model.First().codcat)</th>
@@ -39,4 +45,19 @@
 
 @section Scripts {
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+            var searchString = this.value.toLowerCase();
+            var rows = document.querySelectorAll('#categoriaTable tbody tr');
+            rows.forEach(function (row) {
+                var cell = row.querySelector('td:nth-child(2)'); 
+                var cellText = cell.textContent.toLowerCase();
+                if (cellText.includes(searchString)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
 }

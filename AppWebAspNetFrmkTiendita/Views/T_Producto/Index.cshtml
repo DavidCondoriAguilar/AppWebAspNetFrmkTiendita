@@ -4,45 +4,68 @@
     ViewBag.Title = "Productos";
 }
 
-<h2>Productos</h2>
+<h2 class="text-center text-primary mb-4">Productos</h2>
 
 <p>
     @Html.ActionLink("Crear Nuevo Producto", "Create", null, new { @class = "btn btn-primary mb-3" })
 </p>
-<table class="table table-hover table-striped">
-    <thead class="thead-dark">
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.First().categoria.codcat)</th>
-            <th>@Html.DisplayNameFor(model => model.First().categoria.nomcat)</th>
-            <th>@Html.DisplayNameFor(model => model.First().nompro)</th>
-            <th>@Html.DisplayNameFor(model => model.First().despro)</th>
-            <th>@Html.DisplayNameFor(model => model.First().prepro)</th>
-            <th>@Html.DisplayNameFor(model => model.First().canpro)</th>
-            <th>@Html.DisplayNameFor(model => model.First().estpro)</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+
+<!-- Formulario de Búsqueda -->
+<div class="form-group">
+    <input type="text" id="searchInput" class="form-control" placeholder="Buscar por nombre de producto..." />
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered" id="productoTable">
+        <thead class="thead-dark">
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.categoria.codcat) </td>
-                <td>@Html.DisplayFor(modelItem => item.categoria.nomcat) </td>
-                <td>@Html.DisplayFor(modelItem => item.nompro)</td>
-                <td>@Html.DisplayFor(modelItem => item.despro)</td>
-                <td>@Html.DisplayFor(modelItem => item.prepro)</td>
-                <td>@Html.DisplayFor(modelItem => item.canpro)</td>
-                <td>@Html.DisplayFor(modelItem => item.estpro)</td>
-                <td>
-                    @Html.ActionLink(" ", "Edit", new { id = item.codpro }, new { @class = "btn btn-warning btn-sm bi bi-pencil-square", @title = "Editar" })
-                    @Html.ActionLink(" ", "Details", new { id = item.codpro }, new { @class = "btn btn-info btn-sm bi bi-info-circle", @title = "Detalles" })
-                    @Html.ActionLink(" ", "Delete", new { id = item.codpro }, new { @class = "btn btn-danger btn-sm bi bi-trash", @title = "Eliminar" })
-                </td>
+                <th>@Html.DisplayNameFor(model => model.First().categoria.codcat)</th>
+                <th>@Html.DisplayNameFor(model => model.First().categoria.nomcat)</th>
+                <th>@Html.DisplayNameFor(model => model.First().nompro)</th>
+                <th>@Html.DisplayNameFor(model => model.First().despro)</th>
+                <th>@Html.DisplayNameFor(model => model.First().prepro)</th>
+                <th>@Html.DisplayNameFor(model => model.First().canpro)</th>
+                <th>@Html.DisplayNameFor(model => model.First().estpro)</th>
+                <th>Acciones</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.categoria.codcat)</td>
+                    <td>@Html.DisplayFor(modelItem => item.categoria.nomcat)</td>
+                    <td>@Html.DisplayFor(modelItem => item.nompro)</td>
+                    <td>@Html.DisplayFor(modelItem => item.despro)</td>
+                    <td>@Html.DisplayFor(modelItem => item.prepro)</td>
+                    <td>@Html.DisplayFor(modelItem => item.canpro)</td>
+                    <td>@Html.DisplayFor(modelItem => item.estpro)</td>
+                    <td>
+                        @Html.ActionLink(" ", "Edit", new { id = item.codpro }, new { @class = "btn btn-warning btn-sm bi bi-pencil-square", @title = "Editar" })
+                        @Html.ActionLink(" ", "Details", new { id = item.codpro }, new { @class = "btn btn-info btn-sm bi bi-info-circle", @title = "Detalles" })
+                        @Html.ActionLink(" ", "Delete", new { id = item.codpro }, new { @class = "btn btn-danger btn-sm bi bi-trash", @title = "Eliminar" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 @section Scripts {
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+            var searchString = this.value.toLowerCase();
+            var rows = document.querySelectorAll('#productoTable tbody tr');
+            rows.forEach(function (row) {
+                var cell = row.querySelector('td:nth-child(3)'); 
+                var cellText = cell.textContent.toLowerCase();
+                if (cellText.includes(searchString)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
 }
